@@ -62,39 +62,36 @@ export default function Carousel() {
           })}
         </motion.div>
       </motion.div>
-      {/* typescript is not used cause of AnimatePresence */}
-      <AnimatePresence>
+      <AnimatePresence transition={{ type: "crossfade", duration: 1.2 }}>
         {selectedImage !== null && (
           <motion.div
             className="fixed inset-0  flex justify-center items-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             key={selectedImage}
           >
-            <div
+            <motion.div
               ref={fullscreenRef}
               className="absolute inset-0 bg-black opacity-85 cursor-pointer"
               onClick={() => setSelectedImage(null)}
             />
 
-            <div className="flex flex-col relative">
+            <motion.div className="flex flex-col relative">
               <motion.div
-                className="relative overflow-hidden pb-[66.66%] w-[90vw] h-[355px] sm:max-w-[60vw] "
+                className="relative rounded-xl overflow-hidden pb-[66.66%] w-[90vw] h-[355px] sm:max-w-[60vw] "
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
               >
                 <motion.img
-                  
                   src={images[selectedImage]?.src}
                   alt="selected image"
-                  className="rounded-lg absolute h-full w-full object-contain"
+                  className="rounded-xl absolute h-full w-full object-contain "
                 />
               </motion.div>
-              <div className="arrow-buttons flex w-[50%] justify-evenly mx-auto mt-4">
+              <motion.div className="arrow-buttons flex w-[50%] justify-evenly mx-auto mt-4">
                 <motion.button
                   style={{ display: selectedImage > 0 ? "block" : "none" }}
                   onClick={handlePreviousImage}
@@ -141,8 +138,8 @@ export default function Carousel() {
                     />
                   </svg>
                 </motion.button>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
