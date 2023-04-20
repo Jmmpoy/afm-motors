@@ -1,55 +1,41 @@
-import { useRef, useEffect } from "react";
-import Layout from "@/components/layout";
-import Header from "@/components/header/header";
-import Footer from "@/components/footer";
-import Container from "@/components/container";
-import FancyLink from "@/components/fancyLink";
-import { fade, delayedFade } from "@/helpers/transitions";
-import { LazyMotion, domAnimation, m } from "framer-motion";
-import { NextSeo } from "next-seo";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import Arrow from "./arrow";
-import FadeInWhenVisible from "./fadeInWhenVisible";
+import React from "react";
+import Container from "./container";
+
+const items= [
+  {
+    title: "Adresse",
+    text: "Route des Poids-Lourds Kingabwa, Limete",
+    subtext: "Kinshasa RDC"
+  },
+  {
+    title: "Téléphone",
+    text: "+243 990 288 880"
+  },
+  {
+    title: "Réseaux sociaux",
+    iconUrl: "/assets/icons/facebook_logo_icon.svg"
+  }
+]
+
 export default function Contact() {
-  const content = [
-    {
-      id: 1,
-      text: "We're always interested to hear about new projects, so please feel free to reach out  below if you'd like to collaborate with us.",
-    },
-    
-  ];
 
   return (
-    <Container extraClasses="Content-Container relative py-12 lg:pt-48 overflow-hidden">
-      <motion.div className="flex flex-col content-center h-full md:grid md:grid-cols-4">
-        <motion.p
-          variants={delayedFade}
-          initial="initial"
-          animate="enter"
-          exit="exit"
-          className="sectionTitle">
-          Contact Us
-        </motion.p>
-        <motion.div className="sectionGrid">
-          {content.map((item, index) => {
-            const isFirst = item.id === 1 ? "mt-0" : "mt-8";
-            return (
-              <FadeInWhenVisible style="">
-                <motion.h3
-                  key={item.id}
-                  className={`${isFirst} sectionContent`}>
-                  {item.text}
-                </motion.h3>
-               <div className="flex">
-                <motion.a href="mailto:Didier.mumengi@gmail.com" className={`${isFirst} underline font-founders font-bold uppercase  text-sm xsm:text-xl  md:text-2xl `}>Email us</motion.a>
-                <Arrow size="w-4 w-4 xsm:w-6 w-6" style="self-center ml-4 rotate-[320deg]"/>
-               </div>
-              </FadeInWhenVisible>
-            );
-          })}
-        </motion.div>
-      </motion.div>
+    <Container extraClasses="Contact-Container py-16 md:py-32 lg:py-48 bg-white">
+      <h4 className="font-futuraLight font-normal text-palette-blue text-2xl underline underline-offset-8 mb-20 md:-mt-20">Contact</h4>
+      <div
+        className="contact   grid grid-cols-1 gap-20  md:grid-cols-2 lg:grid-cols-3 grid-rows-2"
+        aria-labelledby="footer-heading">
+        <div className="grid grid-cols-1 row-span-2 gap-20  md:grid-cols-2  col-span-2  md:mt-0 sm:gap-y-14">
+          {items.map(({title, text, subtext, iconUrl}, i) =>
+          <div key={i} className="w-full xsl:w-6/12 text-palette-blue">
+            <h4 className="text-2xl text-palette-orange uppercase">{title}</h4>
+            {text && <p className="mt-1  xl:text-2xl">{text}</p>}
+            {subtext && <p className="xl:text-2xl">{subtext}</p>}
+            {iconUrl && <a href="#" className=""><img src={iconUrl} alt="facebook icon logo" className="w-10" /></a>}
+          </div>
+          )}
+        </div>
+      </div>
     </Container>
   );
 }

@@ -1,19 +1,30 @@
-import Layout from "@/components/layout";
+import { useRef } from "react";
+import Layout from "../components/layout";
+import Header from "../components/header/header";
+import Hero from "../components/hero";
+import Services from "../components/services";
+import About from '../components/about'
+import Contact from "../components/contact";
+import Footer from "../components/footer";
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import { NextSeo } from "next-seo";
-import Intro from "@/components/intro";
-export default function Home() {
+import React from "react";
+import Carousel from "@/components/carousel";
+
+export default function Home(){
+
   return (
-    <Layout class="relative no-scrollbar">
-      <NextSeo
-        title="350lab"
-        description="350Lab is a creative studio with design and development expertise.
-              We partner with brands by developing solutions through strategy &
-              design."
-      />
+    <Layout>
+      <NextSeo title="Home" />
       <LazyMotion features={domAnimation}>
         <m.div initial="initial" animate="enter" exit="exit">
-          <Intro/>
+        <Header />
+          <Hero />
+          <About/>
+          <Services />
+          <Carousel />
+          <Contact/>
+          <Footer/>
         </m.div>
       </LazyMotion>
     </Layout>

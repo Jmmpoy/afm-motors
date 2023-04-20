@@ -1,41 +1,59 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { Dispatch, SetStateAction, useState } from "react";
+import { motion, Variants } from "framer-motion";
 import Link from "next/link";
-import Logo from "@/components/header/logo";
 import { fade } from "@/helpers/transitions";
-export default function Navigation({ items, activeIndex, setActiveIndex }) {
-  const [AnimationIsDone, SetAnimationIsDone] = useState(false);
+
+
+
+const navItemVariants = {
+  hidden: { opacity: 0, y: -10 },
+  visible: { opacity: 1, y: 0 },
+};
+
+export default function Navigation({ items }) {
+  const [activeIndex, setActiveIndex] = useState(null);
 
   return (
-    <motion.nav className="self-baseline flex flex-end xsm:basis-1/2  md:flex items-center w-full  md:w-auto">
-      <div className="flex">
-        <motion.ul
-          variants={fade}
-          initial="initial"
-          animate="enter"
-          exit="exit"
-          className=" navItems flex flex-end  space-x-4 self-center">
-          {items.map(({ route, url }, index) => {
-            const isActive = index === activeIndex;
-            const isServices = route.url === "services";
-            return (
-              <motion.li key={index} class=" uppercase ">
-                {isServices ? (
-                  <a className="text-sm font-founders">
-                    <span>{route}</span>
-                  </a>
-                ) : (
-                  <Link href={url} class="relative">
-                    <a className="text-sm font-founders">
-                      <span>{route}</span>
-                    </a>
-                  </Link>
-                )}
-              </motion.li>
-            );
-          })}
-        </motion.ul>
-      </div>
+    <motion.nav className="hidden md:flex justify-end items-center  w-full  md:w-auto">
+      <motion.ul
+        variants={fade}
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        onHoverEnd={() => setActiveIndex(null)}
+        className="flex space-x-3 font-neueLight"
+      >
+        {items.map(({ route, url }, index) => {
+          const isActive = index === activeIndex;
+          return (
+            <motion.li
+              key={index}
+              onHoverStart={() => setActiveIndex(index)}
+              variants={navItemVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <Link legacyBehavior href={url}>
+                <a className="relative hover:text-gray-500 focus:text-gray-500 text-lg">
+                  {isActive && (
+                    <motion.span
+                      layoutId="shadow"
+                      className="shadow"
+                      initial={{ opacity: 0}}
+                      animate={{ opacity: 1 }}
+                      transition={{
+                        type: "spring",
+                        duration: 0.5,
+                      }}
+                    />
+                  )}
+                  <span>{route}</span>
+                </a>
+              </Link>
+            </motion.li>
+          );
+        })}
+      </motion.ul>
     </motion.nav>
   );
 }

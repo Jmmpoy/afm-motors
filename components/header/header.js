@@ -1,57 +1,56 @@
-import FancyLink from "@/components/fancyLink";
-import Container from "@/components/container";
+
+import Container from "../container";
 import Navigation from "./navigation";
 import OverlayMenu from "./menu";
-import Link from "next/link";
 import Burger from "./burger";
-import Logo from "@/components/header/logo";
+import Logo from "./logo";
+
 import { useState, useEffect } from "react";
 import {
   motion,
   AnimateSharedLayout,
-  useAnimation,
+  AnimatePresence,
   useCycle,
 } from "framer-motion";
-import { fade, delayedFade } from "@/helpers/transitions";
-import DateTime from "../dateTime";
-import HeaderLogo from "../headerLogo";
+
 
 export default function Header() {
+  const [activeIndex, setActiveIndex] = useState(null);
+  const [open, setOpen] = useCycle(false, true);
+  const menuItems = [
+    { route: "À Propos", url: "/apropos" },
+    { route: "Services", url: "/services" },
+    { route: "Clients", url: "/clients" },
+    { route: "Contact", url: "/contact" },
+  ];
 
-  const Logofade = {
-    initial: { opacity: 0 },
-    enter: {
-      opacity: 1,
-      transition: { duration: 0.4, delay: .9, ease: [0.83, 0, 0.17, 1] },
-    },
-    exit: {
-      opacity: 0,
-      transition: { duration: 0.4, ease: [0.83, 0, 0.17, 1] },
-    },
-  };
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
+  }, [open]);
+
 
   return (
-    <header
-      className=" w-full bg-black fixed flex flex-col justify-center z-20 h-[10vh]"
-      data-scroll
-      data-scroll-sticky
-      data-scroll-target="#scroll-container"
-    >
+    <header className="overflow-hidden bg-palette-blue  text-white w-full flex flex-col justify-center h-14 sm:h-16">
       <Container extraClasses="Header-Section ">
-        <motion.div className="flex flex-row  h-full justify-between">
+        <div className="flex justify-between h-full ">
+          <Logo style="w-10 sm:w-16 md:w-18" />
           <AnimateSharedLayout>
-          <motion.a
-                variants={Logofade}
-                initial="initial"
-                animate="enter"
-                exit="exit"
-                className="cursor-pointer"
-              >
-                <HeaderLogo />
-              </motion.a>
+            <Navigation
+              items={menuItems}
+              activeIndex={activeIndex}
+              setActiveIndex={setActiveIndex}
+            />
           </AnimateSharedLayout>
-        </motion.div>
+          <Burger open={open} setOpen={setOpen} />
+        </div>
       </Container>
+      <AnimatePresence>
+        {open && <OverlayMenu open={open} items={menuItems} />}
+      </AnimatePresence>
     </header>
   );
 }

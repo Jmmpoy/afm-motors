@@ -1,4 +1,5 @@
 import Link from "next/link";
+import React from "react";
 
 export default function FancyLink({
   destination,
@@ -9,11 +10,10 @@ export default function FancyLink({
 }) {
   return (
     <Link href={destination}>
-      <a
-        aria-label={a11yText}
-        className={`underline hover:text-gray-500 focus:text-gray-500 ${extraClasses}`}>
-        {label}
-      </a>
+      aria-label={a11yText}
+      className=
+      {`underline hover:text-gray-500 focus:text-gray-500 ${extraClasses}`}
+      {label}
     </Link>
   );
 }

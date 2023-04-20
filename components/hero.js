@@ -1,88 +1,46 @@
 import React from "react";
-import { motion } from "framer-motion";
-import Container from "@/components/container";
-import Link from "next/link";
-import {
-  fade,
-  delayedFade,
-  container,
-  heroLineReveal,
-} from "@/helpers/transitions";
-import Arrow from "./arrow";
+import { m } from "framer-motion";
+import Container from "./container";
+import { fade } from "../helpers/transitions";
+import Image from 'next/image'
+import heroImage from '../public/images/hero-image.webp';
 
-export default function Hero({ message }) {
-  const content = [
-    { id: 1, text: "We provide digital" },
-    { id: 2, text: "solutions to grow" },
-    { id: 3, text: "your businesses" },
-  ];
-
-  let mainStyle = "h-[65vh] flex flex-col justify-center sm:h-[85vh]";
-  let heroText =
-    "about-font-size text-xl mb-0 font-neueBold uppercase    xsm:text-3xl sm:mb-3   sm:text-5xl md:text-6xl";
-  let errorText =
-    "hero-font-size cursor-pointer mb-0 font-neueBold uppercase  xsm:text-3xl sm:mb-3   sm:text-5xl";
-
+export default function Hero() {
   return (
-    <Container extraClasses="Hero-Container relative">
-      <motion.main className={mainStyle}>
-        <motion.div>
-          {message == null ? (
-            <motion.ul
-              variants={container}
-              initial="hidden"
-              animate="show"
-              exit="exit"
-            >
-              {content.map((item, index) => {
-                const isGray = item.id === 3 ? "text-brown" : "text-offWhite";
-                return (
-                  <motion.div key={index} className="overflow-hidden">
-                    <motion.li
-                      custom={item.id}
-                      initial="hidden"
-                      animate="visible"
-                      exit="exit"
-                      variants={heroLineReveal}
-                      key={item.id}
-                      className={` ${isGray} ${heroText}`}
-                    >
-                      {item.text}
-                    </motion.li>
-                  </motion.div>
-                );
-              })}
-            </motion.ul>
-          ) : (
-            <motion.div
-              variants={fade}
-              initial="initial"
-              animate="enter"
-              exit="exit"
-            >
-              <motion.p className={errorText}>
-                This page does not exist.
-              </motion.p>
-              <Link href="/">
-                <motion.a className={`${errorText} underline`}>
-                  Clic here.
-                </motion.a>
-              </Link>
-            </motion.div>
-          )}
-        </motion.div>
-      </motion.main>
-      {message == null && (
-        <motion.div
-          variants={delayedFade}
-          initial="initial"
-          animate="enter"
-          exit="exit"
-          className="hero-arrow absolute bottom-[120px] right-10 rotate-[120deg]"
-        >
-          <Arrow size="w-8 w-8" />
-        </motion.div>
-      )}
-    </Container>
+
+
+    <div className="relative h-screen">
+
+      <Container extraClasses="Hero-Container relative z-[14]">
+
+        <m.main className="hero translate-y-[-50px] h-screen sm:h-screen flex flex-col justify-center  ">
+          <m.div
+            className=" relative"
+            variants={fade}
+            initial="initial"
+            animate="enter"
+            exit="exit"
+          >
+            <div className=" hero-container text-left  w-12/12 ">
+              <h1 className="text-2xl  sm:text-6xl">
+                Des services de qualité <span className="block">supérieure pour votre voiture</span>
+              </h1>
+              <div>
+                <p className=" font-sans  text-gray-900  mt-8 mb-6 w-12/12 text-base sm:max-w-screen-sm sm:text-2xl    md:leading-normal   lg:text-3xl lg:max-w-screen-md xl:text-3xl ">
+                  Chez <span className="text-palette-orange">AFM Motors</span>, nous sommes fiers de fournir des services de réparation automobile professionnels et fiables à nos clients, des petites réparations aux révisions complètes, grâce à une équipe de mécaniciens qualifiés et expérimentés.
+                </p>
+              </div>
+            </div>
+            <button type="button" className=" z-10 absolute cursor-pointer  w-40  text-opacity-100 bg-palette-orange font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2  hover:bg-palette-lightOrange transition duration-300 ease-in-out">Prenez Contact</button>
+          </m.div>
+        </m.main>
+      </Container>
+      <Image alt="heroImage"
+        src={heroImage}
+        placeholder="blur"
+        priority
+        quality={100} layout="fill" objectFit="cover" className="opacity-25" />
+    </div>
+
   );
 }

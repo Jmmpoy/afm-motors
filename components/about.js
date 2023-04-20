@@ -1,78 +1,24 @@
-import { useRef, useEffect } from "react";
-import Layout from "@/components/layout";
-import Header from "@/components/header/header";
-import Footer from "@/components/footer";
-import Container from "@/components/container";
-import FancyLink from "@/components/fancyLink";
-import { fade, delayedFade } from "@/helpers/transitions";
-import { LazyMotion, domAnimation, m } from "framer-motion";
-import { NextSeo } from "next-seo";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import React from 'react'
+import Container from './container';
 
 export default function About() {
-  const content = [
-    {
-      id: 1,
-      text: "We're a creative studio with development and design expertise. We partner with brands by developing solutions through strategy and design.",
-    },
-    {
-      id: 2,
-      text: "We believe a great presentation evokes interest and drives business results far better than any saying can.",
-    },
-  ];
 
-  function FadeInWhenVisible({ children }) {
-    const controls = useAnimation();
-    const [ref, inView] = useInView({ margin: "70px" });
-
-    useEffect(() => {
-      if (inView) {
-        controls.start("visible");
-      }
-    }, [controls, inView]);
-
-    return (
-      <motion.div
-        ref={ref}
-        animate={controls}
-        initial="hidden"
-        exit="exit"
-        transition={{ duration: 0.9, ease: "easeInOut" }}
-        variants={{
-          hidden: { opacity: 0, y: 50 },
-          visible: { opacity: 1, y: 0 },
-          exit: { opacity: 0, y: 50 },
-        }}>
-        {children}
-      </motion.div>
-    );
-  }
+  const lineStyle = "font-futuraLight text-2xl sm:text-3xl ";
+  
   return (
-    <Container extraClasses="Content-Container relative  overflow-auto  md:overflow-hidden ">
-      <motion.div className="flex flex-col content-center py-16 h-full md:grid  md:grid-cols-4">
-        <motion.p
-          variants={delayedFade}
-          initial="initial"
-          animate="enter"
-          exit="exit"
-          className="sectionTitle">
-          About Us
-        </motion.p>
-        <motion.div className="sectionGrid">
-          {content.map((item, index) => {
-            const isFirst = item.id === 1 ? "mt-0" : "mt-8";
-            return (
-              <FadeInWhenVisible key={item.id}>
-                <motion.h3
-                  className={`${isFirst} sectionContent`}>
-                  {item.text}
-                </motion.h3>
-              </FadeInWhenVisible>
-            );
-          })}
-        </motion.div>
-      </motion.div>
+    <Container extraClasses=" About-Container py-16 md:py-24 lg:py-24">
+        <h1 className="font-futuraLight font-normal text-2xl underline underline-offset-16 mb-20">A propos</h1>
+        <ul className=" grid grid-cols-1 gap-y-10 font-thin sm:max-w-[80%]">
+            <li className={lineStyle}>
+              Chez <span className='text-palette-orange'>AFM Motors</span>, nous sommes passionnés par les voitures et nous sommes fiers de fournir des services de réparation automobile professionnels et fiables à nos clients. Nous sommes une entreprise familiale avec une longue histoire de service à la communauté locale.
+            </li>
+            <li className={lineStyle}>
+                Nous avons une équipe de <span className='text-palette-orange'>mécaniciens qualifiés</span> et expérimentés qui peuvent prendre en charge tous les types de réparations et d'entretiens automobiles, des petites réparations aux révisions complètes.
+            </li>
+            <li className={lineStyle}>
+                Nous nous engageons à offrir un <span className='text-palette-orange'>service de qualité</span> supérieure à des prix abordables pour satisfaire les besoins de nos clients. Contactez-nous dès maintenant pour discuter de vos besoins automobiles et découvrir comment nous pouvons vous aider à prendre soin de votre voiture.
+            </li>
+      </ul>
     </Container>
-  );
+  )
 }

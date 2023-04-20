@@ -10,11 +10,10 @@ module.exports = {
       neueLight: ["Neue-Light"],
       neueRegular: ["Neue-Regular"],
       neueBold: ["Neue-Bold"],
+      suisseLight: ["Suisse-Light"],
+      suisseRegular: ["Suisse-Regular"],
+      suisseBold: ["Suisse-Bold"],
       futuraLight: ["Futura-Light"],
-      foundersLight: ["FoundersLight"],
-      founders: ["Founders"],
-      ibm: ["IBM"],
-      ibmLight: ["IBMLight"],
     },
     screens: {
       xsm: "400px",
@@ -27,42 +26,24 @@ module.exports = {
     },
     extend: {
       colors: {
-        black: "#1A1A1A",
+        black: "#000",
         white: "#FFF",
-        offWhite: "#FDFBEE",
-        gray: "#888888",
-        brown: "#CD9D77",
-        orange: "#f77e5e",
-        blue: "#2677bb",
-        cyan: "#1aa9bc",
-        fushia: "#de3d83",
+        gray: "fbae17",
         palette: {
-          blue: "#105099",
-          light: "#EAE9E5",
+          blue: "#233D5B",
+          silver:"#99A1AC",
+          orange:"#F75C0F",
+          lightOrange:"#f87c3e",
+          white: "#FFF",
         },
-        "example-color": {
-          light: "#EAE9E5",
-          DEFAULT: "#d18d67",
-          dark: "#ce8860",
-        },
+      },
+      textUnderlineOffset : {
+        16 : '16px'
       },
       height: (theme) => ({
         "50vh": "50vh",
         "75vh": "75vh",
       }),
-      keyframes: {
-        "fade-in": {
-          "0%": {
-            opacity: "0",
-          },
-          "100%": {
-            opacity: "1",
-          },
-        },
-      },
-      animation: {
-        "fade-in": "fade-in 0.5s ease-inOut",
-      },
     },
   },
   plugins: [],
