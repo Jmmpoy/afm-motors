@@ -19,7 +19,7 @@ const items = [
 
 export default function Contact() {
   return (
-    <Container extraClasses="rounded-t-[2rem] bg-palette-blue py-16 md:py-32 bg-white">
+    <Container extraClasses="rounded-t-[2rem] bg-palette-blue py-16 md:py-32">
       <div
         className="contact   grid grid-cols-1 gap-20  md:grid-cols-2 lg:grid-cols-3 grid-rows-2"
         aria-labelledby="footer-heading"

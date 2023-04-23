@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "./container";
+
+import { useAnimation, motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 export default function Services() {
   const items = [
@@ -185,40 +188,53 @@ export default function Services() {
     },
   ];
 
+  const ServiceItem = ({ img,title,content }) => {
+    const [ref, inView] = useInView({
+      threshold: 0.3, // Trigger the animation when half the element is in view
+      triggerOnce: true, 
+    });
+
+    return (
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 20 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+        className="service-container flex flex-col h-auto sm:h-[292px] rounded-2xl transition duration-200 ease-in bg-[#38506B] bg-opacity-20 hover:shadow-lg hover:bg-opacity-60 p-4"
+      >
+        {img}
+        <div className="text-container">
+          <motion.h3
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.3, delay: 0.2, ease: "easeOut" }}
+            className="text-gray-900 text-palette-orange text-3xl"
+          >
+            {title}
+          </motion.h3>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.3, delay: 0.4, ease: "easeOut" }}
+            className="mt-3 text-xl"
+          >
+            {content}
+          </motion.p>
+        </div>
+      </motion.div>
+    );
+  };
+
   return (
     <Container extraClasses=" Services-Container py-16 bg-palette-blue rounded-[2rem] md:py-24 lg:py-24 relative">
       <h1 className="font-futuraLight font-normal text-2xl underline underline-offset-8">
         Nos Services
       </h1>
-      <div className="   grid grid-cols-1 gap-20 mt-24   md:grid-cols-2 lg:grid-cols-3">
-        {items.map(({ img, title, content }, index) => {
-          return (
-            <div key={index} className="service-container flex flex-col  rounded-2xl transition duration-200 ease-in bg-[#38506B] bg-opacity-20 hover:shadow-lg  hover:bg-opacity-60 p-4">
-              {img}
-              <div className="text-container">
-                <h3 className="text-gray-900 text-palette-orange text-3xl">{title}</h3>
-                <p className=" mt-3 text-xl ">{content}</p>
-              </div>
-            </div>
-          );
+      <motion.ul className="   grid grid-cols-1 gap-20 mt-24   md:grid-cols-2 lg:grid-cols-3">
+        {items.map(({ img,content,title}, index) => {
+          return <ServiceItem key={index} img={img} content={content} title={title} />
         })}
-      </div>
-
-      <svg
-        className="absolute bottom-[-20px] left-10 w-6 h-6"
-        fill="white"
-        stroke="white"
-        strokeWidth="1.5"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M15.75 17.25L12 21m0 0l-3.75-3.75M12 21V3"
-        ></path>
-      </svg>
+      </motion.ul>
     </Container>
   );
 }

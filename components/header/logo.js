@@ -1,15 +1,14 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { fade } from "../../helpers/transitions";
+import { fade, delayedFade } from "../../helpers/transitions";
 
 export default function Logo({ style }) {
   return (
     <motion.div
       className="logo-container"
-      variants={fade}
-      initial="initial"
-      animate="enter"
-      exit="exit">
+      initial={{opacity:0}}
+      animate={{opacity:1,transition:{duration:.4,delay:1.7}}}
+      >
       <Link href="/">
       <svg
       xmlns="http://www.w3.org/2000/svg"

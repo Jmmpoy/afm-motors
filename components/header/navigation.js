@@ -16,10 +16,8 @@ export default function Navigation({ items }) {
   return (
     <motion.nav className="hidden md:flex justify-end items-center  w-full  md:w-auto">
       <motion.ul
-        variants={fade}
-        initial="initial"
-        animate="enter"
-        exit="exit"
+        initial={{opacity:0}}
+        animate={{opacity:1,transition:{duration:.4,delay:1.7}}}
         onHoverEnd={() => setActiveIndex(null)}
         className="flex space-x-3 font-neueLight"
       >

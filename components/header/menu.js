@@ -31,7 +31,7 @@ export default function Menu({ open, items }) {
       initial="closed"
       animate={open && "open"}
       exit="closed"
-      className="bg-palette-blue  text-white absolute left-0 top-0 w-full h-screen font-sans px-10 md:hidden pt-20 z-[15]">
+      className="bg-palette-blue  text-white fixed left-0 top-0 w-full h-screen font-sans px-10 md:hidden pt-20">
       <motion.ul
         variants={stagger}
         className="flex flex-col justify-center h-5/6 overflow-hidden ">
