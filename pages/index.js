@@ -10,6 +10,7 @@ import { LazyMotion, domAnimation, m } from "framer-motion";
 import { NextSeo } from "next-seo";
 import React from "react";
 import Carousel from "@/components/carousel";
+import CarouselText from "@/components/carouselText";
 
 export default function Home(){
 
@@ -22,6 +23,7 @@ export default function Home(){
           <Hero />
           <About/>
           <Services />
+          <CarouselText/>
           <Carousel />
           <Contact/>
           <Footer/>

@@ -30,9 +30,8 @@ export default function Carousel() {
   };
 
   return (
-    <Container extraClasses="mt-24 mb-36">
+    <Container extraClasses="mt-12 mb-36 relative">
       <motion.div
-        ref={carousel}
         className="carousel overflow-scroll scrollbar-hide relative"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -44,7 +43,7 @@ export default function Carousel() {
             return (
               <motion.div
                 key={index}
-                className={`relative item min-h-[20rem] h-[20rem] min-w-[100%] sm:min-w-[60%] md:min-w-[33%] p-4`}
+                className={` relative item min-h-[20rem] h-[25rem] min-w-[100%] sm:min-w-[60%] md:min-w-[33%] p-4 transition duration-200 ease-in-out  hover:drop-shadow-xl `}
                 onClick={() => setSelectedImage(index)}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -55,7 +54,7 @@ export default function Carousel() {
                   key={`image-${index}`}
                   src={image.src}
                   alt="image"
-                  className="h-full w-full object-cover rounded-[5px] cursor-pointer"
+                  className="h-full w-full object-cover rounded-xl cursor-pointer"
                 />
               </motion.div>
             );

@@ -14,7 +14,7 @@
 
 /* Simple defaults */
 body {
-  @apply font-sans antialiased text-white bg-palette-blue;
+  @apply font-sans antialiased text-white bg-white;
 }
 
 h1 {
