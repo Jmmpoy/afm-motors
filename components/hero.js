@@ -82,7 +82,7 @@ export default function Hero() {
                           staggerChildren: 0.2,
                           ease: [0.08, 0.82, 0.17, 1],
                         }}
-                        className={`${isFirst} mx-auto font-sans text-opacity-100  text-gray-900   mb-0 w-12/12 text-base sm:max-w-screen-lg     md:leading-normal md:text-xl  lg:text-2xl   `}
+                        className={`${isFirst} hero-content mx-auto font-sans text-opacity-100  text-gray-900   mb-0 w-12/12  sm:max-w-screen-lg     md:leading-normal md:text-xl  lg:text-2xl   `}
                       >
                         {line}
                       </motion.li>

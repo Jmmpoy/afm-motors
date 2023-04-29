@@ -93,6 +93,26 @@ p {
     /* temporary fix: !important */
     transform: translateX(15px) !important;
   }
+
+  /* HERO SECTION CONTENT LINES */
+
+@media (min-width: 320px) {
+  .hero-content 
+  {
+    font-size: 3.5vw;
+    line-height:1.5;
+  }
+}
+
+
+@media (min-width: 400px) {
+  .hero-content 
+  {
+    font-size: 13px;
+    line-height:1.5;
+  }
+}
+
 }
 
 @layer utilities {
