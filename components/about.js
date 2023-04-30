@@ -6,7 +6,7 @@ export default function About() {
 
   return (
     <Container extraClasses=" About-Container py-16 text-palette-blue relative md:py-24 lg:py-24">
-      <ul className=" grid grid-cols-1 gap-y-10 font-thin text-center mx-auto sm:max-w-[80%]">
+      <ul className=" grid grid-cols-1 gap-y-10 font-thin text-center mx-auto sm:max-w-[80%] bg-[url('/assets/icons/speedometer_icon.svg')] bg-center bg-no-repeat bg-contain">
         <li className={lineStyle}>
           Chez <span className="text-palette-orange">AFM Motors</span>, nous
           sommes passionnés par les voitures et nous sommes fiers de fournir des
