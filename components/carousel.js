@@ -59,7 +59,7 @@ export default function Carousel() {
   }, []);
 
   return (
-    <Container extraClasses=" mb-32 relative  h-[60vh] flex flex-col justify-center">
+    <Container extraClasses=" mb-24 md:mb-28 relative  h-[50vh] flex flex-col justify-center">
       <motion.div
         className="carousel overflow-x-scroll  relative scrollbar-hide "
         ref={elementRef}
@@ -101,7 +101,7 @@ export default function Carousel() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0 }}
             key={selectedImage}
           >
             <motion.div

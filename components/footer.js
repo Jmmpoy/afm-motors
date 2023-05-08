@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="text-white bg-palette-blue">
       <Container>
         <div className=" border-opacity-10 py-4">
-          <div className="flex flex-wrap text-xs">
+          <div className="flex flex-wrap text-[8px]">
             <div className="flex space-x-1 mb-1 md:mb-0">
               <a
                 href="https://www.350lab.com"
