@@ -87,7 +87,7 @@ FUTURA
     url("../public/fonts/Futura/FuturaPT-Light.woff") format("woff");
   font-weight: 300;
   font-style: normal;
-  font-display: swap;
+  font-display: fallback;
 }
 
 @font-face {
@@ -96,7 +96,7 @@ FUTURA
     url("../public/fonts/Futura/FuturaPT-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
-  font-display: swap;
+  font-display: fallback;
 }
 
 

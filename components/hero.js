@@ -32,16 +32,7 @@ export default function Hero() {
   ];
   return (
     <div className="relative h-screen">
-      {/* <Image
-        alt="heroImage"
-        src={heroImage}
-        placeholder="blur"
-        priority
-        quality={100}
-        layout="fill"
-        objectFit="cover"
-        className="absolute opacity-25 rounded-b-[2rem] z-[10] "
-      /> */}
+      
       <Container extraClasses="Hero-Container relative bg-palette-blue rounded-b-[2rem]">
         <main className="hero translate-y-[-50px] h-screen sm:h-screen flex flex-col justify-center  ">
           <div className=" relative translate-y-[80px]">
@@ -58,7 +49,7 @@ export default function Hero() {
                           delay: 0.7,
                           ease: [0.08, 0.82, 0.17, 1],
                         }}
-                        className="text-3xl  text-opacity-100 mb-0  sm:text-4xl md:text-5xl lg:text-6xl"
+                        className="text-3xl text-white  text-opacity-100 mb-0  sm:text-4xl md:text-5xl lg:text-6xl"
                       >
                         {line}
                       </motion.h1>
@@ -82,7 +73,7 @@ export default function Hero() {
                           staggerChildren: 0.2,
                           ease: [0.08, 0.82, 0.17, 1],
                         }}
-                        className={`${isFirst} hero-content mx-auto font-sans text-opacity-100  text-gray-900   mb-0 w-12/12  sm:max-w-screen-lg     md:leading-normal md:text-xl  lg:text-2xl   `}
+                        className={`${isFirst} text-white hero-content mx-auto font-neue  text-opacity-100  text-gray-900   mb-0 w-12/12  sm:max-w-screen-lg     md:leading-normal md:text-xl  lg:text-2xl   `}
                       >
                         {line}
                       </motion.li>
@@ -94,7 +85,8 @@ export default function Hero() {
             <motion.div initial={{opacity:0}} animate={{opacity:1, transition:{duration:.5, delay:1.3,ease: "easeInOut",}}} className="flex justify-center mt-8">
               <motion.button
                 type="button"
-                className=" z-10 absolute cursor-pointer  w-40  text-opacity-100 bg-palette-orange bg-opacity-100 font-medium rounded-[30px] text-lg px-5 py-2.5 mr-2 mb-2  hover:bg-palette-lightOrange transition duration-300 ease-in-out"
+                whileHover={{ scale: 1.1 }} // Scale the element on hover
+                className=" text-white  absolute cursor-pointer  w-40  text-opacity-100 bg-palette-orange bg-opacity-100 font-medium rounded-[30px] text-lg px-5 py-2.5 mr-2 mb-2  hover:bg-palette-lightOrange transition duration-300 ease-in-out"
               >
                 Prenez Contact
               </motion.button>
@@ -102,6 +94,7 @@ export default function Hero() {
           </div>
         </main>
       </Container>
+      
     </div>
   );
 }

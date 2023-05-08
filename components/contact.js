@@ -34,17 +34,17 @@ export default function Contact() {
         <div className="grid grid-cols-1 row-span-2 gap-20  md:grid-cols-3  col-span-2  md:mt-0 sm:gap-y-14 w-full">
           {items.map(({ title, text, subtext, icons }, i) => (
             <div key={i} className="w-full xsl:w-6/12 text-white flex flex-col items-center">
-              <h4 className="text-2xl text-palette-orange uppercase text-center mb-3">
+              <h4 className="text-2xl text-palette-orange  text-center mb-3">
                 {title}
               </h4>
               {text && <p className="mt-1  xl:text-2xl text-center">{text}</p>}
-              {subtext && <p className="xl:text-2xl text-center text-center">{subtext}</p>}
+              {subtext && <p className="xl:text-2xl  text-center">{subtext}</p>}
               {icons && <div className="grid grid-cols-2 gap-x-4 justify-between">{icons.map(({icon, socialMediaUrl}) => (
                 <a href={socialMediaUrl} className="text-center">
                   <img
                     src={icon}
                     alt={`${icon} icon logo`}
-                    className="w-10"
+                    className="w-8"
                   />
                 </a>
               ))}</div>}

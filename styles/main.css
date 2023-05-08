@@ -14,15 +14,15 @@
 
 /* Simple defaults */
 body {
-  @apply font-sans antialiased text-white bg-white;
+  @apply font-sans  antialiased text-white bg-white;
 }
 
 h1 {
-  @apply font-sans mb-3   leading-tight;
+  @apply  mb-3   leading-tight;
 }
 
 h2 {
-  @apply font-sans tracking-tight;
+  @apply tracking-tight;
 }
 
 h3 {
@@ -94,7 +94,7 @@ p {
     transform: translateX(15px) !important;
   }
 
-  /* HERO SECTION CONTENT LINES */
+/* HERO SECTION CONTENT LINES */
 
 @media (min-width: 320px) {
   .hero-content 
@@ -104,11 +104,18 @@ p {
   }
 }
 
-
 @media (min-width: 400px) {
   .hero-content 
   {
     font-size: 13px;
+    line-height:1.5;
+  }
+}
+
+@media (min-width: 500px) {
+  .hero-content 
+  {
+    font-size: 16px;
     line-height:1.5;
   }
 }
@@ -140,5 +147,9 @@ p {
 .no-scroll {
   overflow: hidden !important;
 }
+
+
+
+
 
 }

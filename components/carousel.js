@@ -2,10 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import Container from "./container";
 import { motion, AnimatePresence } from "framer-motion";
 import images from "@/helpers/images";
+import { useInView } from "react-intersection-observer";
 
 export default function Carousel() {
+  const [ref, inView] = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+  });
   const [selectedImage, setSelectedImage] = useState(null);
-  const carousel = useRef();
   const fullscreenRef = useRef();
   const totalImages = images.length;
 
@@ -29,21 +33,50 @@ export default function Carousel() {
     }
   };
 
+  const elementRef = useRef(null);
+
+  useEffect(() => {
+    const handleWheel = (event) => {
+      const element = elementRef.current;
+
+      element.scrollLeft -= event.deltaY;
+      event.preventDefault();
+    };
+
+    const handleScroll = (event) => {
+      event.preventDefault();
+    };
+
+    const element = elementRef.current;
+
+    element.addEventListener("wheel", handleWheel);
+    element.addEventListener("scroll", handleScroll);
+
+    return () => {
+      element.removeEventListener("wheel", handleWheel);
+      element.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <Container extraClasses="mt-12 mb-36 relative">
+    <Container extraClasses=" mb-32 relative  h-[60vh] flex flex-col justify-center">
       <motion.div
-        className="carousel overflow-scroll scrollbar-hide relative"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
+        className="carousel overflow-x-scroll  relative scrollbar-hide "
+        ref={elementRef}
       >
-        <motion.div className="inner-carousel flex">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5, staggerChildren: 0.2 }}
+          className="inner-carousel flex  snap-x snap-start snap-always"
+        >
           {images.map((image, index) => {
             return (
               <motion.div
                 key={index}
-                className={` relative item min-h-[20rem] h-[25rem] min-w-[100%] sm:min-w-[60%] md:min-w-[33%] p-4 transition duration-200 ease-in-out  hover:drop-shadow-xl `}
+                className={`snap-start snap-always relative item min-h-[20rem] h-[25rem] min-w-[100%] sm:min-w-[60%] md:min-w-[33%] p-4 transition duration-100 ease-in-out  hover:drop-shadow-xl `}
                 onClick={() => setSelectedImage(index)}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -64,9 +97,10 @@ export default function Carousel() {
       <AnimatePresence transition={{ type: "crossfade", duration: 1.2 }}>
         {selectedImage !== null && (
           <motion.div
-            className="fixed inset-0  flex justify-center items-center"
+            className="fixed inset-0  flex justify-center items-center z-[50]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             key={selectedImage}
           >
