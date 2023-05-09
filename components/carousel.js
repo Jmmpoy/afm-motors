@@ -59,7 +59,7 @@ export default function Carousel() {
   }, []);
 
   return (
-    <Container extraClasses=" mb-24 md:mb-28 relative  h-[50vh] flex flex-col justify-center">
+    <Container extraClasses=" mb-12 md:mb-28 relative  h-[50vh] flex flex-col justify-center">
       <motion.div
         className="carousel overflow-x-scroll  relative scrollbar-hide "
         ref={elementRef}

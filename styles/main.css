@@ -18,7 +18,7 @@ body {
 }
 
 h1 {
-  @apply  mb-3   leading-tight;
+  @apply mb-3   leading-tight;
 }
 
 h2 {
@@ -70,7 +70,14 @@ p {
   .shadow {
     position: absolute;
     inset: 0;
-    background-image: linear-gradient(to bottom, #ffffff, #c9c9d3, #9397a9, #5c6881, #233d5b);
+    background-image: linear-gradient(
+      to bottom,
+      #ffffff,
+      #c9c9d3,
+      #9397a9,
+      #5c6881,
+      #233d5b
+    );
     border-radius: 4px;
     z-index: -1;
     height: 5%;
@@ -94,32 +101,36 @@ p {
     transform: translateX(15px) !important;
   }
 
-/* HERO SECTION CONTENT LINES */
+  /* HERO SECTION CONTENT LINES */
 
-@media (min-width: 320px) {
-  .hero-content 
-  {
-    font-size: 3.5vw;
-    line-height:1.5;
+  @media (min-width: 320px) {
+    .hero-content {
+      font-size: 3.7vw;
+      line-height: 1.5;
+    }
   }
-}
 
-@media (min-width: 400px) {
-  .hero-content 
-  {
-    font-size: 13px;
-    line-height:1.5;
+  @media (min-width: 400px) {
+    .hero-content {
+      font-size: 13px;
+      line-height: 1.5;
+    }
   }
-}
 
-@media (min-width: 500px) {
-  .hero-content 
-  {
-    font-size: 16px;
-    line-height:1.5;
+  @media (min-width: 500px) {
+    .hero-content {
+      font-size: 16px;
+      line-height: 1.5;
+    }
   }
-}
 
+  /* CAROUSEL SECTION CONTENT LINES */
+  @media (max-width: 515px) {
+    .carousel-textLine {
+      font-size: clamp(13px, 3.5vw, 24px);
+      line-height: 1.5;
+    }
+  }
 }
 
 @layer utilities {
@@ -134,22 +145,17 @@ p {
   }
 
   /* For Webkit-based browsers (Chrome, Safari and Opera) */
-.scrollbar-hide::-webkit-scrollbar {
+  .scrollbar-hide::-webkit-scrollbar {
     display: none;
-}
+  }
 
-/* For IE, Edge and Firefox */
-.scrollbar-hide {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-}
+  /* For IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 
-.no-scroll {
-  overflow: hidden !important;
-}
-
-
-
-
-
+  .no-scroll {
+    overflow: hidden !important;
+  }
 }

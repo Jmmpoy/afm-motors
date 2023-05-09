@@ -5,11 +5,11 @@ import { useInView } from "react-intersection-observer";
 
 export default function CarouselText() {
   const [ref, inView] = useInView({
-    threshold: 0.3, // Trigger the animation when half the element is in view
+    threshold: 0.3,
     triggerOnce: true,
   });
 
-  const lineStyle = "font-futuraLight text-[.8rem] sm:text-[1.1rem] md:text-2xl";
+  const lineStyle = " carousel-textLine font-futuraLight line  sm:text-xl  md:text-2xl";
   const lines = [
     <>
     Vous cherchez un <span className="text-palette-orange">garage automobile</span> de confiance ?
@@ -19,10 +19,10 @@ export default function CarouselText() {
   ];
 
   return (
-    <Container extraClasses="About-Container py-16 text-palette-blue relative md:py-20 lg:py-28">
+    <Container extraClasses="About-Container py-12 text-palette-blue relative md:py-20 lg:py-28">
       <motion.ul
         ref={ref}
-        className="grid grid-cols-1 font-thin text-center mx-auto sm:max-w-[80%]"
+        className="grid grid-cols-1 font-thin text-center mx-auto sm:max-w-[80%"
       >
         {lines.map((line, index) => (
           <motion.li

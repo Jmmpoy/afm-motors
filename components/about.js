@@ -9,7 +9,7 @@ export default function About() {
     triggerOnce: true,
   });
 
-  const lineStyle = "font-futuraLight text-2xl sm:text-2xl 2xl:text-3xl";
+  const lineStyle = "font-futuraLight text-base sm:text-2xl 2xl:text-3xl";
 
   const content = [
     {
