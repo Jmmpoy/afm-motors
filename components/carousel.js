@@ -6,7 +6,7 @@ import { useInView } from "react-intersection-observer";
 
 export default function Carousel() {
   const [ref, inView] = useInView({
-    threshold: 0.3,
+    threshold: 0.7,
     triggerOnce: true,
   });
   const [selectedImage, setSelectedImage] = useState(null);
@@ -64,35 +64,40 @@ export default function Carousel() {
         className="carousel overflow-x-scroll  relative scrollbar-hide "
         ref={elementRef}
       >
-        <motion.div
+        <motion.ul
           ref={ref}
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, staggerChildren: 0.2 }}
+          transition={{ duration: 0.5, staggerChildren: .2 }}
           className="inner-carousel flex  snap-x snap-start snap-always"
         >
           {images.map((image, index) => {
             return (
-              <motion.div
+              <motion.li
                 key={index}
                 className={`snap-start snap-always relative item min-h-[20rem] h-[25rem] min-w-[100%] sm:min-w-[60%] md:min-w-[33%] p-4 transition duration-100 ease-in-out  hover:drop-shadow-xl `}
                 onClick={() => setSelectedImage(index)}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ 
+                  duration: 0.5,
+                
+                }}
               >
+                <motion.div
+                  className="h-full w-full absolute top-0 left-0 bg-white"
+                  style={{ scaleX: 0, originX: "right" }}
+                  initial={{ scaleX: 1 }}
+                  animate={inView ? { scaleX: 0 } : {scaleX:1}}
+                  exit={{ scaleX: 1 }}
+                  transition={{duration: 0.5, ease: "easeInOut", delay: `${index/2}` }}
+                />
                 <motion.img
                   key={`image-${index}`}
                   src={image.src}
                   alt="image"
                   className="h-full w-full object-cover rounded-xl cursor-pointer"
                 />
-              </motion.div>
+              </motion.li>
             );
           })}
-        </motion.div>
+        </motion.ul>
       </motion.div>
       <AnimatePresence transition={{ type: "crossfade", duration: 1.2 }}>
         {selectedImage !== null && (

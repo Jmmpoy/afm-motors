@@ -64,26 +64,26 @@ export default function Services() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.3, delay: 0.2, ease: "easeOut" }}
-            className="text-gray-900 text-palette-orange text-xl md:text-2xl"
+            className=" mb-0 sm:mb-3 text-gray-900 text-palette-orange text-xl  md:text-2xl"
           >
             {title}
           </motion.h3>
-          <motion.h4
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.3, delay: 0.4, ease: "easeOut" }}
-            className="mt-2 text-xl text-white"
+            className=" mt-2 text-base sm:text-xl text-white"
           >
             {content}
-          </motion.h4>
+          </motion.p>
         </div>
       </motion.div>
     );
   };
 
   return (
-    <Container extraClasses=" Services-Container py-16 bg-palette-blue rounded-[2rem] md:py-24 lg:py-24 relative">
-      <h1 className="font-futuraLight text-white font-normal text-2xl underline underline-offset-8">
+    <Container extraClasses=" Services-Container py-20 bg-palette-blue rounded-[2rem] md:py-24 lg:py-24 relative">
+      <h1 className="font-futuraLight text-white font-normal text-xl sm:text-2xl underline underline-offset-8">
         Nos Services
       </h1>
       <motion.ul className="   grid grid-cols-1 gap-20 mt-24   md:grid-cols-2 lg:grid-cols-3">

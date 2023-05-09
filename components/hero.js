@@ -30,22 +30,6 @@ export default function Hero() {
   return (
     <div className="relative h-screen">
       <Container extraClasses="Hero-Container relative bg-palette-blue rounded-b-[2rem]">
-        <motion.div 
-        initial={{opacity:0}} 
-        animate={{opacity:0.1}}
-        transition={{duration:1}}
-        className="parallax-container absolute inset-0">
-          <motion.div
-            className="parallax-hero h-full w-full min-h-full"
-            style={{
-              backgroundImage: 'url("/images/hero-image.webp")',
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundAttachment: "fixed",
-            }}
-          ></motion.div>
-        </motion.div>
 
         <main className="hero translate-y-[-50px] h-screen sm:h-screen flex flex-col justify-center">
           <div className=" relative translate-y-[80px]">
@@ -108,7 +92,7 @@ export default function Hero() {
               <motion.button
                 type="button"
                 whileHover={{ scale: 1.1 }} // Scale the element on hover
-                className=" text-white  absolute cursor-pointer    text-opacity-100 bg-palette-orange bg-opacity-100 font-medium rounded-[30px] text-sm w-30 sm:w-40 sm:text-lg  px-5 py-2.5 mr-2 mb-2  hover:bg-palette-lightOrange transition duration-300 ease-in-out"
+                className=" text-white  absolute cursor-pointer    text-opacity-100 bg-palette-orange bg-opacity-100 font-medium rounded-[30px] text-sm w-30 sm:w-40 sm:text-lg  px-5 py-2.5 mr-2 mb-2  hover:bg-palette-lightOrange transition duration-100 ease-in-out"
               >
                 Prenez Contact
               </motion.button>
