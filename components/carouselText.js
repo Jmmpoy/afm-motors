@@ -5,11 +5,11 @@ import { useInView } from "react-intersection-observer";
 
 export default function CarouselText() {
   const [ref, inView] = useInView({
-    threshold: 0.3, // Trigger the animation when half the element is in view
+    threshold: 0.3,
     triggerOnce: true,
   });
 
-  const lineStyle = "font-futuraLight text-[.8rem] sm:text-[1.1rem] md:text-2xl";
+  const lineStyle = " carousel-textLine font-futuraLight line  sm:text-xl  md:text-2xl";
   const lines = [
     <>
     Vous cherchez un <span className="text-palette-orange">garage automobile</span> de confiance ?

@@ -9,21 +9,22 @@ export default function About() {
     triggerOnce: true,
   });
 
-  const lineStyle = "font-futuraLight text-2xl sm:text-2xl 2xl:text-3xl";
+  const lineStyle = "font-futuraLight text-base sm:text-2xl 2xl:text-3xl";
 
   const content = [
-    {
-      text: "Chez AFM Motors, nous sommes passionnés par les voitures et nous sommes fiers de fournir des services de réparation automobile professionnels et fiables à nos clients. Nous sommes une entreprise familiale avec une longue histoire de service à la communauté locale.",
-      highlight: "AFM Motors",
-    },
-    {
-      text: "Nous avons une équipe de mécaniciens qualifiés et expérimentés qui peuvent prendre en charge tous les types de réparations et d'entretiens automobiles, des petites réparations aux révisions complètes.",
-      highlight: "mécaniciens qualifiés",
-    },
-    {
-      text: "Nous nous engageons à offrir un service de qualité supérieure à des prix abordables pour satisfaire les besoins de nos clients. Contactez-nous dès maintenant pour discuter de vos besoins automobiles et découvrir comment nous pouvons vous aider à prendre soin de votre voiture.",
-      highlight: "service de qualité, besoins automobiles",
-    },
+    
+       <><span className="text-palette-orange">Chez AFM Motors</span>, nous sommes passionnés par les voitures et nous sommes fiers de fournir des services de réparation automobile professionnels et fiables à nos clients. 
+       "Nous sommes une entreprise familiale avec une longue histoire de service à la communauté locale.</>,
+
+       <>
+       Nous avons une équipe de <span className="text-palette-orange">mécaniciens qualifiés</span> et expérimentés qui peuvent prendre en charge tous les types de réparations et d'entretiens automobiles, des petites réparations aux révisions complètes.
+       </>,
+       <>
+       Nous nous engageons à offrir <span className="text-palette-orange">un service de qualité</span> supérieure à des prix abordables pour satisfaire les besoins de nos clients. Contactez-nous dès maintenant pour discuter de vos besoins automobiles et découvrir comment nous pouvons vous aider à prendre soin de votre voiture.
+       </>
+      
+    
+    
   ];
 
   const listVariants = {
@@ -61,14 +62,7 @@ export default function About() {
       >
         {content.map((item, index) => (
           <motion.li key={index} variants={listItemVariants} className={lineStyle}>
-            {item.text.split(item.highlight).map((text, index) => (
-              <React.Fragment key={index}>
-                {text}
-                {index !== item.text.length - 1 && (
-                  <span className="text-palette-orange">{item.highlight}</span>
-                )}
-              </React.Fragment>
-            ))}
+            {item}
           </motion.li>
         ))}
       </motion.ul>
