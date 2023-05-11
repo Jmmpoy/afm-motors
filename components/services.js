@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { forwardRef, useEffect } from "react";
 import Container from "./container";
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-export default function Services() {
+export default function Services ({servicesRef}) {
   const items = [
     {
       title: "Réparation et entretien",
@@ -82,8 +82,8 @@ export default function Services() {
   };
 
   return (
-    <Container extraClasses=" Services-Container py-16 bg-palette-blue rounded-[2rem] md:py-24 lg:py-24 relative">
-      <h1 className="font-futuraLight text-white font-normal text-2xl underline underline-offset-8">
+    <Container extraClasses=" Services-Container py-16 bg-palette-blue rounded-[2rem] md:py-24 lg:py-24 relative" >
+      <h1 className="font-futuraLight text-white font-normal text-2xl underline underline-offset-8" id="services">
         Nos Services
       </h1>
       <motion.ul className="   grid grid-cols-1 gap-20 mt-24   md:grid-cols-2 lg:grid-cols-3">

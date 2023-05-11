@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import Container from "./container";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -51,7 +51,7 @@ export default function About() {
   };
 
   return (
-    <Container extraClasses="About-Container py-16 text-palette-blue relative md:py-24 lg:py-36">
+    <Container extraClasses="About-Container py-16 text-palette-blue relative md:py-24 lg:py-36" id="apropos" >
       <motion.ul
         ref={ref}
         className="grid grid-cols-1 gap-y-10 font-thin text-center mx-auto sm:max-w-[80%]"

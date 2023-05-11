@@ -19,10 +19,11 @@ export default function CarouselText() {
   ];
 
   return (
-    <Container extraClasses="About-Container py-16 text-palette-blue relative md:py-20 lg:py-28">
+    <Container extraClasses="About-Container py-16 text-palette-blue relative md:py-20 lg:py-28" >
       <motion.ul
         ref={ref}
         className="grid grid-cols-1 font-thin text-center mx-auto sm:max-w-[80%]"
+        id="clients"
       >
         {lines.map((line, index) => (
           <motion.li

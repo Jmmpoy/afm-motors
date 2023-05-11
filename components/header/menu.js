@@ -1,11 +1,11 @@
 import React from "react";
 import { slideInLeft, stagger } from "../../helpers/transitions";
 import { motion } from "framer-motion";
+import {Link} from "react-scroll"
 
 
 
-
-export default function Menu({ open, items }) {
+export default function Menu({ open, items, setOpen }) {
   const asideVariants = {
     open: {
       x: 0,
@@ -40,8 +40,10 @@ export default function Menu({ open, items }) {
             <motion.li
               key={index}
               variants={slideInLeft}
-              className="menu-overlay-item text-white text-6xl  md:text-7xl pt-10 hover:text-palette-orange  ">
+              className="menu-overlay-item text-white text-6xl  md:text-7xl pt-10 hover:text-palette-orange " onCLick={setOpen} >
+              <Link to={url} smooth={true} duration={800} delay={900}>
               {route}
+              </Link>
             </motion.li>
           );
         })}
