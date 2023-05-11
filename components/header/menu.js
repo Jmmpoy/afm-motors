@@ -40,8 +40,8 @@ export default function Menu({ open, items, setOpen }) {
             <motion.li
               key={index}
               variants={slideInLeft}
-              className="menu-overlay-item text-white text-6xl  md:text-7xl pt-10 hover:text-palette-orange " onCLick={setOpen} >
-              <Link to={url} smooth={true} duration={800} delay={900}>
+              className="menu-overlay-item text-white text-6xl  md:text-7xl pt-10 hover:text-palette-orange "  >
+              <Link to={url} smooth={true} duration={800} delay={1000} offset={-50} onClick={setOpen}>
               {route}
               </Link>
             </motion.li>
