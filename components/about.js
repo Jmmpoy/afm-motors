@@ -52,13 +52,14 @@ export default function About() {
   };
 
   return (
-    <Container extraClasses="About-Container py-16 text-palette-blue relative md:py-24 lg:py-36" id="apropos" >
+    <Container extraClasses="About-Container py-16 text-palette-blue relative md:py-24 lg:py-36" >
       <motion.ul
         ref={ref}
         className="grid grid-cols-1 gap-y-10 font-thin text-center mx-auto sm:max-w-[80%]"
         variants={listVariants}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
+        id="apropos"
       >
         {content.map((item, index) => (
           <motion.li key={index} variants={listItemVariants} className={lineStyle}>

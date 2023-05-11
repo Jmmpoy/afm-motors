@@ -33,7 +33,7 @@ export default function Hero() {
   return (
     <div className="relative h-screen">
       <Container extraClasses="Hero-Container relative bg-palette-blue rounded-b-[2rem]">
-        <main className="hero translate-y-[-50px] h-screen sm:h-screen flex flex-col justify-center  " id="apropos">
+        <main className="hero translate-y-[-50px] h-screen sm:h-screen flex flex-col justify-center  ">
           <div className=" relative translate-y-[80px]">
             <div className=" hero-container w-12/12 text-center mx-auto">
               <motion.div className="title-container">

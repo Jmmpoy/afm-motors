@@ -1,7 +1,8 @@
-import React, {forwardRef} from "react";
+import React from "react";
 import Container from "./container";
-import { motion } from "framer-motion";
+import { motion, stagger } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+// import { stagger } from "@/helpers/transitions";
 
 const items = [
   {
@@ -26,7 +27,8 @@ const items = [
   },
 ];
 
-export default function Contact({contactRef}) {
+
+export default function Contact() {
 
   const [ref, inView] = useInView({
     threshold: 0.3,
@@ -46,7 +48,7 @@ export default function Contact({contactRef}) {
                 ref={ref}
                 initial={{opacity: 0, y:20}} 
                 animate={inView ? {opacity: 1, y: 0} : {}}
-                transition={{ duration: 0.3, delay: 0.4, ease: "easeOut" }}
+                transition={{ duration: 0.3, delay: 0.2 * i, ease: "easeOut" }}
                 key={i} 
                 className="w-full xsl:w-6/12 text-white flex flex-col items-center"
               >
