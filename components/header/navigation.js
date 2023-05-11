@@ -1,7 +1,6 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
-import { motion, Variants } from "framer-motion";
-import Link from "next/link";
-import { fade } from "@/helpers/transitions";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-scroll"
 
 
 
@@ -10,7 +9,9 @@ const navItemVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-export default function Navigation({ items }) {
+
+
+export default function Navigation({ items, setOpen }) {
   const [activeIndex, setActiveIndex] = useState(null);
 
   return (
@@ -30,9 +31,10 @@ export default function Navigation({ items }) {
               variants={navItemVariants}
               initial="hidden"
               animate="visible"
+              onClick={setOpen}
             >
-              <Link legacyBehavior href={url}>
-                <a className="relative hover:text-gray-500 focus:text-gray-500 text-lg">
+              <Link to={url} smooth={true} duration={800} offset={-100}>
+                <span className="relative hover:text-gray-500 focus:text-gray-500 text-lg">
                   {isActive && (
                     <motion.span
                       layoutId="shadow"
@@ -46,7 +48,7 @@ export default function Navigation({ items }) {
                     />
                   )}
                   <span>{route}</span>
-                </a>
+                </span>
               </Link>
             </motion.li>
           );

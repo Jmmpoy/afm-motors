@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { m, motion, useViewportScroll } from "framer-motion";
 import Container from "./container";
+import { fade } from "../helpers/transitions";
+import {Link} from "react-scroll"
+import Image from "next/image";
 import heroImage from "../public/images/hero-image.webp";
 
 export default function Hero() {
@@ -30,14 +33,13 @@ export default function Hero() {
   return (
     <div className="relative h-screen">
       <Container extraClasses="Hero-Container relative bg-palette-blue rounded-b-[2rem]">
-
-        <main className="hero translate-y-[-50px] h-screen sm:h-screen flex flex-col justify-center">
+        <main className="hero translate-y-[-50px] h-screen sm:h-screen flex flex-col justify-center  " id="apropos">
           <div className=" relative translate-y-[80px]">
             <div className=" hero-container w-12/12 text-center mx-auto">
               <motion.div className="title-container">
                 {titleLines.map((line, index) => {
                   return (
-                    <m.div className="first-title-line-container overflow-hidden">
+                    <m.div className="first-title-line-container overflow-hidden" key={index}>
                       <motion.h1
                         initial={{ y: 150 }}
                         animate={{ y: 0 }}
@@ -94,7 +96,9 @@ export default function Hero() {
                 whileHover={{ scale: 1.1 }} // Scale the element on hover
                 className=" text-white  absolute cursor-pointer    text-opacity-100 bg-palette-orange bg-opacity-100 font-medium rounded-[30px] text-sm w-30 sm:w-40 sm:text-lg  px-5 py-2.5 mr-2 mb-2  hover:bg-palette-lightOrange transition duration-100 ease-in-out"
               >
+                <Link to="contact" smooth={true} duration={800}>
                 Prenez Contact
+                </Link>
               </motion.button>
             </motion.div>
           </div>

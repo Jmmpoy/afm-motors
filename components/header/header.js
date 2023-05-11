@@ -18,10 +18,10 @@ export default function Header() {
   const [activeIndex, setActiveIndex] = useState(null);
   const [open, setOpen] = useCycle(false, true);
   const menuItems = [
-    { route: "À Propos", url: "/apropos" },
-    { route: "Services", url: "/services" },
-    { route: "Clients", url: "/clients" },
-    { route: "Contact", url: "/contact" },
+    { route: "À Propos", url: "apropos" },
+    { route: "Services", url: "services" },
+    { route: "Clients", url: "clients" },
+    { route: "Contact", url: "contact" },
   ];
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export default function Header() {
         </div>
       </Container>
       <AnimatePresence>
-        {open && <OverlayMenu open={open} items={menuItems} />}
+        {open && <OverlayMenu open={open} items={menuItems} setOpen={setOpen}/>}
       </AnimatePresence>
     </header>
   );

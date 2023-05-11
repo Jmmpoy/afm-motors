@@ -14,6 +14,13 @@ import CarouselText from "@/components/carouselText";
 
 export default function Home(){
 
+  const aboutRef = useRef(null)
+  const clientsRef = useRef(null)
+  const contactRef = useRef(null)
+  const servicesRef = useRef(null)
+
+  const sectionsRefs = [aboutRef, servicesRef, clientsRef, contactRef]
+
   return (
     <Layout>
       <NextSeo title="Home" />
@@ -21,11 +28,11 @@ export default function Home(){
         <m.div initial="initial" animate="enter" exit="exit">
         <Header />
           <Hero />
-          <About/>
+          <About />
           <Services />
-          <CarouselText/>
+          <CarouselText />
           <Carousel />
-          <Contact/>
+          <Contact />
           <Footer/>
         </m.div>
       </LazyMotion>
